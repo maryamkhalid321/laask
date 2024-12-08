@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospital Call Request</title>
+</head>
+<body>
+    <h2>Hospital Call Request Form</h2>
+    <form id="call-request-form">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" required><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required><br>
+
+        <label for="reason">Reason for Call:</label>
+        <textarea id="reason" name="reason" required></textarea><br>
+
+        <button type="submit">Submit</button>
+    </form>
+    <h2>Call Requests</h2>
+    <ul id="requests"></ul>
+
+    <script>
+        document.getElementById('call-request-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            // Get form values
+            var name = document.getElementById('name').value;
+            var phone = document.getElementById('phone').value;
+            var reason = document.getElementById('reason').value;
+            
+            // Create a new list item with the form data
+            var li = document.createElement('li');
+            li.textContent = `Name: ${name}, Phone: ${phone}, Reason: ${reason}`;
+            
+            // Add the list item to the requests list
+            document.getElementById('requests').appendChild(li);
+            
+            // Clear the form
+            document.getElementById('call-request-form').reset();
+        });
+    </script>
+</body>
+</html>
